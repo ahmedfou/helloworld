@@ -1,15 +1,8 @@
-pipeline {
-    agent any
+node {
     stages {
-        stage('Pull') {
+        stage('Clone') {
             steps {
-                checkout([$class: 'GitSCM',
-                branches: [[name: '*/main']],
-                doGenerateSubmoduleConfigurations: false,
-                extensions: [],
-                submoduleCfg: [],
-                userRemoteConfigs: [[url: 'https://github.com/ahmedfou/helloworld.git']]])
-                sh "ls"
+                git "https://github.com/ahmedfou/helloworld.git"
             }
         }
         stage('Build') {
