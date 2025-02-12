@@ -1,19 +1,28 @@
-node {
-    stage('Clone') {
+pipeline {
+    agent any
+    stages {
+        stage('Pull') {
             steps {
-                sh "rm -rf *"
-                sh "git clone https://github.com/ahmedfou/helloworld"
+                checkout([$class: 'GitSCM',
+                branches: [[name: '*/main']],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [],
+                submoduleCfg: [],
+                userRemoteConfigs: [[url: 'https://github.com/ahmedfou/helloworld.git']]])
+                sh "ls"
             }
-    }
-    stage('Build') {
-        steps {
-            sh "cd javasimple-jenkins/ && javac Main.java"
         }
-    }
-    stage('Run') {
-        steps {
-            sh "cd javasimple-jenkins/ && java Main.java"
+        stage('Build') {
+            steps {
+                sh "javac Main.java"
+            }
+        }
+        stage('Run') {
+            steps {
+                sh "java Main"
+            }
         }
     }
 }
+
 
