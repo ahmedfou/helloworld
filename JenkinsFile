@@ -1,20 +1,12 @@
 node {
-    stages {
-        stage('Clone') {
-            steps {
-                git "https://github.com/ahmedfou/helloworld.git"
-            }
-        }
-        stage('Build') {
-            steps {
-                sh "javac Main.java"
-            }
-        }
-        stage('Run') {
-            steps {
-                sh "java Main"
-            }
-        }
+    stage('Clone') {
+        git "https://github.com/ahmedfou/helloworld.git"
+    }
+    stage('Build') {
+        sh "javac Main.java"
+    }
+    stage('Run') {
+        sh "java Main" 
     }
 }
 
