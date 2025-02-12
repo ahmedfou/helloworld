@@ -3,5 +3,6 @@ public class Main {
     System.out.println("hello world jenkinsFile");
     System.out.println("hello world after commit&push");
     System.out.println("hello world after 3commit&push push push");
+    System.out.println("hello world after 3commit&push push push");
   }
 }
