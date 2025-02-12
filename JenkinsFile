@@ -1,0 +1,20 @@
+node {
+    stages {
+        stage('Clone') {
+            steps {
+                sh "rm -rf *"
+                sh "git clone https://github.com/ahmedfou/javasimple-jenkins"
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "cd javasimple-jenkins/ && javac Main.java"
+            }
+        }
+        stage('Run') {
+            steps {
+                sh "cd javasimple-jenkins/ && java Main.java"
+            }
+        }
+    }
+}
